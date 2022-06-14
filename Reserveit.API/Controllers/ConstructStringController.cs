@@ -38,11 +38,6 @@ namespace Reserveit.API.Controllers
                 result = result + "\n";
             }
             result = result.Replace("\n", Environment.NewLine);
-            var cookieOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = DateTime.UtcNow.AddDays(7)
-            };
             HttpContext.Response.Cookies.Append("ConstructString", result, new CookieOptions { Expires = DateTime.Now.AddDays(30) });
             return Created("~api/ConstructString", result);
         }
